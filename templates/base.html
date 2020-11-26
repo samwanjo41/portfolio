@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <!-- <title>Portfolio</title> -->
+<!--
+Elegance Template
+https://templatemo.com/tm-528-elegance
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fullpage.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    </head>
+    
+    <body>
+        {% if messages %}
+        <div>
+          <strong>Messages:</strong>
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+    <div id="video">
+        <div class="preloader">
+            <div class="preloader-bounce">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    
+
+        <header id="header">
+            <div class="container-fluid">
+                <div class="navbar">
+                    <a href="{% url 'home'%}" id="logo" title="Elegance by TemplateMo">
+                        Portfolio
+                    </a>
+                    <div class="navigation-row">
+                        <nav id="navigation">
+                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                            <div class="nav-box navbar-collapse">
+                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                    {% if user.is_authenticated %}
+                                    <li data-menuanchor="slide01" class="active"><a href="{% url 'home'%}">Home</a></li>
+                                    <li data-menuanchor="slide01" class="active"><a href="{% url 'premium'%}">Premium</a></li>
+                                    
+                                    <li data-menuanchor="slide07"><a href="{% url 'account_logout' %}">Logout</a></li>      
+                                    {% else %}
+                                    <li data-menuanchor="slide07"><a href="{% url 'account_signup' %}">Sign up</a></li>
+                                    <li data-menuanchor="slide07"><a href="{% url 'account_login' %}">Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <video autoplay muted loop id="myVideo">
+          <source src="{% static 'images/video-bg.mp4' %}" type="video/mp4">
+        </video>
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'js/fullpage.min.js' %}"></script>
+
+    <script src="{% static 'js/scrolloverflow.js' %}"></script>
+
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.inview.min.js' %}"></script>
+
+    <script src="{% static 'js/form.js' %}"></script>
+
+    <script src="{% static 'js/custom.js' %}"></script>
+
+
+  </body>
+</html>

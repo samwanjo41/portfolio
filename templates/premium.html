@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .cont{
+    margin: auto;
+    text-align: center;
+    
+  }
+  
+
+  /* .card-image{
+    background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);
+    background-size: cover;
+  } */
+</style>
+<div id="fullpage" class="fullpage-default">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center mt-3">
+        <h1 class="display-4">Portfolio Premium</h1>
+        <p class="lead">A one time offer to access all my paid and free projects</p>
+    </div>
+
+<!-- Card -->
+  <div class="container" >
+    
+    <div class="col-md-5"></div>
+    <div class="col-sm-7  cont">
+        <div class="card card-image">  
+              <div  class="text-black text-center d-flex align-items-center rgba-black-strong py-5 px-4 card-txt">
+                <div class="card-txt">
+                  <h5 style="color:rgb(255, 192, 192);font-weight:bold;" class="pink-text"><i class="fas fa-chart-pie"></i> $10 only!</h5>
+                  <h3 style="color:rgb(158, 131, 201);" class="card-title pt-2"><strong>Portfolio Premium</strong></h3>
+                  <p style="color:rgb(206, 44, 157);">This is a monthly payment plan of $10 to access all the premium packages </p>
+                  <a href="{% url 'checkout' %}"> <button class="btn btn-primary" style="background-color:rgb(201, 192, 255);"> CHECKOUT</button></a>
+                </div>
+              </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

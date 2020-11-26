@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="fullpage" class="fullpage-default">
+    <div class="section animated-row" data-section="slide02">
+        <div class="section-inner">
+            <div class="about-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 order-md-2 mb-4 wide-col-laptop">
+                            <h4 >
+                            <span class="text-muted">Your cart</span>
+                            <span class="badge badge-secondary badge-pill">1</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                <h6 style="color:black;">Portfolio Premium</h6>
+                                <small class="text-muted">One Time</small>
+                                </div>
+                                <span class="text-muted">${{og_dollar}}</span>
+                            </li>
+                            {% if coupon != 'none' %}
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                <h6 >Promo code</h6>
+                                <small>{{coupon|upper}}</small>
+                                </div>
+                                <span class="text-success">-${{coupon_dollar}}</span>
+                            </li>
+                            {% endif %}
+                            <li class="list-group-item d-flex justify-content-between bg-primary">
+                                <h6>Total (USD)</h6>
+                                <small>${{final_dollar}}</small>
+                            </li>
+                            </ul>
+
+                            <form class="card p-2" action="{% url 'checkout' %}" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Promo code" name="coupon" style="border-color: rgb(98, 0, 255);color:black;">
+                                <input type="hidden" value="{{plan}}" name="plan" />
+                                <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary bg-primary" style="background-color: rgb(90, 90, 180);">Redeem</button>
+                                </div>
+                            </div>
+                            </form>
+
+                            <div class="text-center pt-3">
+                            <form action="{% url 'checkout' %}" method="POST">
+                            {% csrf_token %}
+                            <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_HwYbunzfIvvYBQmHq7thPS81"
+                                data-amount="{{price}}"
+                                data-name="Premium Portfolio"
+                                data-description="Premium Membership"
+                                data-email="{{user.email}}"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto">
+                            </script>
+                            <input type="hidden" value="{{plan}}" name="plan" />
+                            <input type="hidden" value="{{coupon}}" name="coupon" />
+                            </form>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

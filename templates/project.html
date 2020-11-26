@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div id="fullpage" class="fullpage-default">
+<div class="section animated-row" data-section="slide02">
+    <div class="section-inner">
+        <div class="about-section">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wide-col-laptop">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="about-contentbox">
+                                <div class="animate" data-animate="fadeInUp">
+                                    
+                                    <h2>{{project.title}}</h2>
+                                    <p>{{project.description}}</p>
+                                    <small>{{project.main_language}}</small>
+                                    
+                                   
+                                    <br><a class="btn btn-warning" href="{{project.url_link}}">GET CODE</a>
+                                   
+                                    
+                                </div>
+                             
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <figure class="about-img animate" data-animate="fadeInUp"><img src="{{project.image.url}}" class="rounded" alt=""></figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
